@@ -1,0 +1,58 @@
+const products = [
+  {
+    id: 1,
+    name: "Classic Black Hoodie",
+    description: "Soft cotton hoodie with minimal branding for all-day comfort.",
+    price: 49.99,
+    image: "https://yourcdn.com/images/hoodie-black.jpg",
+    category: "Men",
+    sizes: ["S", "M", "L", "XL"],
+  },
+  {
+    id: 2,
+    name: "Oversized White T-Shirt",
+    description: "Relaxed fit premium cotton T-shirt for casual days.",
+    price: 19.99,
+    image: "https://yourcdn.com/images/tshirt-white.jpg",
+    category: "Women",
+    sizes: ["S", "M", "L"],
+  },
+  {
+    id: 3,
+    name: "Kids Denim Jacket",
+    description: "Durable and stylish denim jacket for kids.",
+    price: 35.5,
+    image: "https://yourcdn.com/images/kids-denim-jacket.jpg",
+    category: "Kids",
+    sizes: ["S", "M", "L"],
+  },
+  {
+    id: 4,
+    name: "Slim Fit Blue Jeans",
+    description: "Stretch denim with a tapered cut for a modern look.",
+    price: 59.99,
+    image: "https://yourcdn.com/images/jeans-blue.jpg",
+    category: "Men",
+    sizes: ["28", "30", "32", "34"],
+  },
+  {
+    id: 5,
+    name: "Women’s Crop Top",
+    description: "Trendy crop top made with breathable cotton fabric.",
+    price: 25.0,
+    image: "https://yourcdn.com/images/crop-top.jpg",
+    category: "Women",
+    sizes: ["S", "M", "L"],
+  },
+  {
+    id: 6,
+    name: "Unisex Puffer Jacket",
+    description: "Warm puffer jacket with water-resistant material.",
+    price: 89.99,
+    image: "https://yourcdn.com/images/puffer-jacket.jpg",
+    category: "Men",
+    sizes: ["M", "L", "XL"],
+  },
+];
+
+export default products;
