@@ -1,6 +1,6 @@
 import Cart from "../models/Cart.js";
 
-export const addToCart = async (req, res) => {
+export const addToCart = async (req, res, next) => {
   try {
     const {
       productId,
@@ -8,37 +8,54 @@ export const addToCart = async (req, res) => {
       price,
       image,
       size,
-      quantity,
-      userId = null,
+      quantity = 1,
+      userId = null, // guest users also supported
     } = req.body;
 
     if (!productId || !size) {
       return res.status(400).json({ message: "Product and size are required" });
     }
 
-    // Check if cart exists for user (or guest)
+    // ✅ Make sure quantity is at least 1
+    const qty = Math.max(1, Number(quantity));
+
+    // Find or create a cart for this user (or guest)
     let cart = await Cart.findOne({ userId });
 
     if (!cart) {
       cart = new Cart({ userId, items: [] });
     }
 
-    // Check if product+size already exists
+    // Find if item with same product + size already exists
     const existingItem = cart.items.find(
-      (item) => item.productId.toString() === productId && item.size === size
+      (item) =>
+        item.productId.toString() === productId.toString() && item.size === size
     );
 
     if (existingItem) {
-      existingItem.quantity += quantity || 1;
+      // ✅ Increase quantity if already exists
+      existingItem.quantity += qty;
     } else {
-      cart.items.push({ productId, name, price, image, size, quantity });
+      // ✅ Push new product to cart
+      cart.items.push({
+        productId,
+        name,
+        price,
+        image,
+        size,
+        quantity: qty,
+      });
     }
 
     await cart.save();
-    res.status(201).json(cart);
+
+    res.status(201).json({
+      success: true,
+      message: "Item added to cart",
+      cart,
+    });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Failed to add to cart" });
+    next(error); // ✅ Pass to error handler
   }
 };
 
