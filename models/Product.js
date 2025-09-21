@@ -17,7 +17,7 @@ const ProductSchema = new mongoose.Schema(
     image: { type: String, required: true },
     category: {
       type: String,
-      enum: ["Men", "Women", "Kids"],
+      enum: ["Men", "Women","unisex", "Kids"],
       required: true,
     },
     sizes: [SizeSchema], // 👈 now stores array of { size, quantity }

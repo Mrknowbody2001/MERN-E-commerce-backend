@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import userRoutes from "./routes/UserRoutes.js";
 import productRouter from "./routes/ProductRoute.js";
+import cartRouter from "./routes/CartRouter.js";
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use((err, req, res, next) => {
 
 app.use("/api/user", userRoutes);
 app.use("/api/products", productRouter);
+app.use("/api/cart", cartRouter);
 
 //! Database connection
 mongoose
