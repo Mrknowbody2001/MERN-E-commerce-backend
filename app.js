@@ -20,7 +20,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: "Something went wrong", error: err.message });
 });
 
-app.use("/api/user", userRoutes);
+app.use("/api/users", userRoutes);
 app.use("/api/products", productRouter);
 app.use("/api/cart", cartRouter);
 
