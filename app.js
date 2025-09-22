@@ -5,6 +5,8 @@ import cors from "cors";
 import userRoutes from "./routes/UserRoutes.js";
 import productRouter from "./routes/ProductRoute.js";
 import cartRouter from "./routes/CartRouter.js";
+import orderRouter from "./routes/Orderroutes.js";
+
 
 const app = express();
 
@@ -23,7 +25,7 @@ app.use((err, req, res, next) => {
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRouter);
 app.use("/api/cart", cartRouter);
-
+app.use("/api/orders", orderRouter);
 //! Database connection
 mongoose
   .connect(process.env.MONGO_URL)
