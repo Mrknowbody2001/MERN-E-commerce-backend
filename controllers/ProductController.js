@@ -32,8 +32,7 @@ export const createProduct = async (req, res) => {
     res.status(500).json({ message: "Server Error" });
   }
 };
-// GET /api/products?search=hoodie&category=Men&size=M&minPrice=20&maxPrice=50&page=1&limit=10
-
+//! get all  or saerch filer
 export const getProducts = async (req, res) => {
   try {
     const {
