@@ -1,5 +1,15 @@
 import mongoose from "mongoose";
 
+const sizeQuantitySchema = new mongoose.Schema({
+    size: {
+        type: String,
+        required: true,
+    },
+    quantity: { type: Number, required: true, min: 1 }, // 👈 add quantity per size
+
+    
+})
+
 const CartItemSchema = new mongoose.Schema({
   productId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -9,8 +19,7 @@ const CartItemSchema = new mongoose.Schema({
   name: String,
   price: Number,
   image: String,
-  size: String,
-  quantity: { type: Number, default: 1 },
+  sizes:[sizeQuantitySchema],
 });
 
 const CartSchema = new mongoose.Schema(
